@@ -47,8 +47,8 @@ async function genHashedPassword(password){
     })
 
     router.post('/login', async function(request, response){
-        const {role,email,password} = request.body;  
-        const userFromDb = await getUserByName(email,role);
+        const {email,password} = request.body;  
+        const userFromDb = await getUserByName(email);
         if(!userFromDb){
           response.status(400).send({msg:"Invalid Credentials"})
         }
